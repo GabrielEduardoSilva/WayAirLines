@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct WayAirLinesApp: App {
+    let apimanager = APIManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    apimanager.fetchFlights { result in
+                        print(result)
+                    }
+                }
         }
     }
 }
