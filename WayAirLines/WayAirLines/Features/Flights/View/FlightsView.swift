@@ -13,10 +13,25 @@ struct FlightsView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Teste")
+                Picker("Teste", selection: $viewModel.selectedFlightStatus){
+                    ForEach(FlightStatus) { selected in
+                        Text()
+                    }
+                }
+                .font(.system(size: 28))
+                .padding()
+                ScrollView {
+                    ForEach(viewModel.flights) { flight in
+                        Text(flight.airplane_name)
+                    }
+                }
+                .scrollIndicators(.hidden)
             }
             .navigationTitle("Voos")
             .searchable(text: $viewModel.searchText)
+            .onAppear {
+                viewModel.fetchFlights()
+            }
         }
         
     }

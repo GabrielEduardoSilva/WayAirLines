@@ -13,11 +13,6 @@ struct WayAirLinesApp: App {
     var body: some Scene {
         WindowGroup {
             FlightsView()
-                .onAppear {
-                    apimanager.fetchFlights { result in
-                        print(result)
-                    }
-                }
         }
     }
 }
